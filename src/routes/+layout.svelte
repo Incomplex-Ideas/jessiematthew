@@ -1,4 +1,6 @@
 <script lang="ts">
+  import "../fonts.css";
+  import "../app.css";
   import { SvelteUIProvider, type SvelteUITheme, colorScheme, createStyles } from "@svelteuidev/core";
 
   colorScheme.set("dark");
@@ -39,14 +41,41 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: "#212c40";
+    background-color: #212c40;
   }
   :global(html) {
-    background-color: "#212c40";
+    background-color: #212c40;
+    min-height: 100vh;
   }
   :global(h1) {
-    font-size: 2rem;
-    font-weight: 500;
+    font-size: 5rem;
+    font-weight: 600;
     margin: 0;
+    color: #ffc000;
+  }
+  :global(h2) {
+    font-size: 4rem;
+    font-weight: 600;
+    margin: 0;
+    color: #ffc000;
+  }
+  :global(h3) {
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0;
+    color: #ffc000;
+  }
+  :global(h4) {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+    color: #ffc000;
+  }
+
+  :global(h5) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: #ffc000;
   }
 </style>
