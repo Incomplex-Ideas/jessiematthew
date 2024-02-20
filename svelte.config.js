@@ -16,6 +16,10 @@ const config = {
     adapter: adapter({
       fallback: "error.html",
       strict: false,
+      routes: {
+        include: ["/*"],
+        exclude: ["<all>"],
+      },
     }),
     // csp: {
     //   directives: {
