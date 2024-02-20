@@ -1,6 +1,6 @@
 <script lang="ts">
-  import "../fonts.css";
-  import "../app.css";
+  import "$lib/fonts.css";
+  import "$lib/app.css";
   import { SvelteUIProvider, type SvelteUITheme, colorScheme, createStyles } from "@svelteuidev/core";
 
   colorScheme.set("dark");
