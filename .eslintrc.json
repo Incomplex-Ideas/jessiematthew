@@ -1,12 +1,3 @@
 {
-  "plugins": ["next-on-pages"],
-  "extends": [
-    "next/core-web-vitals",
-    // apply the recommended rules
-    "plugin:next-on-pages/recommended"
-  ],
-  "rules": {
-    // specify or tweak the rules
-    "next-on-pages/no-unsupported-configs": "warn"
-  }
+  "extends": ["next/core-web-vitals"]
 }
