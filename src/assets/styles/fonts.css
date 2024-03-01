@@ -1,0 +1,111 @@
+/* fonts.css */
+
+@font-face {
+  font-family: "Autumn";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/autumn-in-november.ttf"); /* IE9 Compat Modes */
+  src: local(""),
+    /* Modern Browsers */ url("/fonts/autumn-in-november.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Charmonman";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/Charmonman-Bold.ttf"); /* IE9 Compat Modes */
+  src: local(""),
+    /* Modern Browsers */ url("/fonts/Charmonman-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Charmonman";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/Charmonman-Regular.ttf"); /* IE9 Compat Modes */
+  src: local(""),
+    /* Modern Browsers */ url("/fonts/Charmonman-Regular.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Darling";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/Darling.ttf"); /* IE9 Compat Modes */
+  src: local(""),
+    /* Modern Browsers */ url("/fonts/Darling.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Geraldine";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/Geraldine.ttf"); /* IE9 Compat Modes */
+  src: local(""),
+    /* Modern Browsers */ url("/fonts/Geraldine.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DancingScript";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/DancingScript-Bold.ttf"); /* IE9 Compat Modes */
+  src: local(""),
+    /* Modern Browsers */ url("/fonts/DancingScript-Bold.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "DancingScript";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/DancingScript-Regular.ttf"); /* IE9 Compat Modes */
+  src: local(""),
+    /* Modern Browsers */ url("/fonts/DancingScript-Regular.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Elsie";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/Elsie-Black.ttf"); /* IE9 Compat Modes */
+  src: local(""),
+    /* Modern Browsers */ url("/fonts/Elsie-Black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Elsie";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/Elsie-Regular.ttf"); /* IE9 Compat Modes */
+  src: local(""),
+    /* Modern Browsers */ url("/fonts/Elsie-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/IosevkaCurly-Light.ttc");
+  src: local(""),
+    /* Modern Browsers */ url("/fonts/IosevkaCurly-Light.ttc")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/IosevkaCurly-Regular.ttc");
+  src: local(""),
+    /* Modern Browsers */ url("/fonts/IosevkaCurly-Regular.ttc")
+      format("truetype");
+}
+
+/* use Elsie as default */
+body {
+  font-family: "Elsie";
+}
