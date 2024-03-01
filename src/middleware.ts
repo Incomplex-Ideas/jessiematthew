@@ -3,7 +3,6 @@ import type { NextRequest } from "next/server";
 
 const apiUrl = process.env.API_URL;
 const isMaintenance = process.env.MAINTENANCE_MODE === "true";
-const baseUrl = process.env.BASE_URL;
 
 export const config = {
   // ignore basic routing
@@ -11,10 +10,10 @@ export const config = {
 };
 
 export function middleware(request: NextRequest) {
-  const { pathname, search } = request.nextUrl;
+  const { pathname, search, origin } = request.nextUrl;
   // if maintenance mode
   if (isMaintenance && !pathname.startsWith("/maintenance")) {
-    return NextResponse.redirect(`${baseUrl}/maintenance`);
+    return NextResponse.redirect(`${origin}/maintenance`);
   }
 
   // if pathname start with /api
