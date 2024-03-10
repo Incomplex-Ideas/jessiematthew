@@ -1,14 +1,15 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import Countdown from "../Countdown";
+import OurName from "../OurName";
 
 const section1Grid = `
 ". . . . . title title title title title title title"
 "photo1 photo1 photo1 photo1 . title title title title title title title"
-"photo1 photo1 photo1 photo1 . . names names names names . ."
-". . photo2 photo2 photo2 . names names names names . ."
-". . photo2 photo2 photo2 . names names names names . ."
-". . photo2 photo2 photo2 . names names names names . ."
+"photo1 photo1 photo1 photo1 . . names names names names names names"
+". . photo2 photo2 photo2 . names names names names names names"
+". . photo2 photo2 photo2 . names names names names names names"
+". . photo2 photo2 photo2 . names names names names names names"
 ". . . . . time time time time time time time"
 ". . . . . time time time time time time time"
 `;
@@ -24,7 +25,7 @@ export default function Landing() {
       gridTemplateColumns="repeat(12, 1fr)"
       gridTemplateRows="repeat(8, 1fr)"
       gridTemplateAreas={section1Grid}
-      minHeight="100vh"
+      height="100vh"
     >
       <Box
         display="flex"
@@ -38,7 +39,7 @@ export default function Landing() {
       </Box>
       <Box width="100%" height="100%" bgcolor="white" gridArea="photo1"></Box>
       <Box gridArea="names">
-        <Typography variant="h1">Matthew & Jessie</Typography>
+        <OurName />
       </Box>
       <Box width="100%" height="100%" bgcolor="white" gridArea="photo2"></Box>
       <Box gridArea="time">

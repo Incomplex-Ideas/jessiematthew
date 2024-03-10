@@ -3,18 +3,14 @@ import "@/assets/styles/globals.css";
 import "@/assets/styles/fonts.css";
 import { defaultTheme } from "@/theme/default-theme";
 import { ThemeProvider } from "@mui/material";
-import AOS from "aos";
 import "aos/dist/aos.css";
+import "animate.css";
 
 export const metadata: Metadata = {
   title: "Jessie & Matthew",
   description: "Jessie and Matthew wedding page",
   keywords: ["Jessie", "Matthew", "wedding"],
   robots: "index, follow",
-  twitter: {
-    creator: "@mystict_",
-    card: "summary_large_image",
-  },
 };
 
 export default function RootLayout({
