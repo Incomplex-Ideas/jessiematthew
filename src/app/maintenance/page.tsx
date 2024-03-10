@@ -80,7 +80,7 @@ export default function Page() {
           </Box>
           <Typography variant="h5" fontFamily="Iosevka" fontWeight={500}>
             We are waiting for the photoshoot to be done. Please comeback at the
-            end of april. Ariga-thankyou!
+            end of March. Thankyou!
           </Typography>
         </Box>
         <Box
@@ -100,7 +100,7 @@ export default function Page() {
               "Jessie",
               "Matthew",
               "😘",
-              "Please comeback at the end of april",
+              "Please comeback at the end of March",
               "🥰",
               "Don't forget",
               "🤗",

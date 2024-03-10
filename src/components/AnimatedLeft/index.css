@@ -1,0 +1,40 @@
+.animated-left {
+  position: fixed;
+  top: 5vh;
+  color: #e6d9b2;
+  z-index: 999;
+  width: 40px;
+  will-change: height, width, transform, opacity, color;
+}
+
+.animated-left::before {
+  content: "";
+  position: fixed;
+  top: 70px;
+  left: 19px;
+  bottom: 0;
+  opacity: 0.8;
+  z-index: 11;
+  background-image: linear-gradient(
+    var(--light-orange) 20%,
+    transparent 30%,
+    #eda187 20%,
+    transparent 0
+  );
+  background-size: 100% 10px;
+  background-position: 0 0;
+  animation: movingdots 0.5s linear infinite;
+  animation-direction: normal;
+  will-change: transform;
+  width: 2px;
+  height: 120vh;
+}
+
+@keyframes movingdots {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translate3d(0, 10px, 0);
+  }
+}

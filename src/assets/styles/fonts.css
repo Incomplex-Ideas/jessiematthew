@@ -105,6 +105,16 @@
       format("truetype");
 }
 
+@font-face {
+  font-family: "LilyScriptOne";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/fonts/LilyScriptOne-Regular.ttf"); /* IE9 Compat Modes */
+  src: local(""),
+    /* Modern Browsers */ url("/fonts/LilyScriptOne-Regular.ttf")
+      format("truetype");
+}
+
 /* use Elsie as default */
 body {
   font-family: "Elsie";
