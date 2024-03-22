@@ -2,6 +2,8 @@
 
 import { Box, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
+import "./index.css";
+import { useTimeCountdown } from "@/hooks/useTimeCountdown";
 
 type MyFormattedTime = {
   days: number;
@@ -9,45 +11,58 @@ type MyFormattedTime = {
   minutes: number;
 };
 export default function Countdown() {
-  const myWeddingTimeInMilliseconds = 1714910400000; // May 05 2024
-  const [formattedTime, setFormattedTime] = useState<MyFormattedTime>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-  });
-
-  const formatTime = (milliseconds: number) => {
-    const minutes = Math.floor((milliseconds / (1000 * 60)) % 60);
-    const hours = Math.floor((milliseconds / (1000 * 60 * 60)) % 24);
-    const days = Math.floor(milliseconds / (1000 * 60 * 60 * 24));
-
-    setFormattedTime({ days, hours, minutes });
-  };
-
-  // Function to update the countdown time every minute
-  const updateCountdown = () => {
-    formatTime(myWeddingTimeInMilliseconds - Date.now());
-    console.log(myWeddingTimeInMilliseconds - Date.now());
-  };
-
-  // Start the countdown interval when the component mounts
-  useEffect(() => {
-    updateCountdown();
-    const countdownInterval = setInterval(updateCountdown, 60000);
-
-    // Clean up the interval when the component unmounts
-    return () => {
-      clearInterval(countdownInterval);
-    };
-  }, []);
-
+  const { isMarried, formattedTime } = useTimeCountdown();
   return (
     <Box>
-      <Typography variant="h1">Countdown</Typography>
-      <Typography variant="body1">
-        Time remaining: {formattedTime.days} days, {formattedTime.hours} hours,
-        and {formattedTime.minutes} minutes
-      </Typography>
+      {isMarried ? (
+        <Typography variant="h1" textAlign="center" fontFamily="Darling">
+          Married
+        </Typography>
+      ) : null}
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        columnGap="3rem"
+        width="100%"
+      >
+        <FloralFrame time={`${formattedTime.days}D`} />
+        <FloralFrame time={`${formattedTime.hours}H`} />
+        <FloralFrame time={`${formattedTime.minutes}M`} />
+      </Box>
     </Box>
   );
 }
+
+type FloralFrameProps = {
+  time: string;
+};
+
+const FloralFrame = ({ time }: FloralFrameProps) => {
+  return (
+    <Box
+      id="floral_frame"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      width="200px"
+      height="200px"
+      position="relative"
+      zIndex="2"
+      sx={{
+        background: "url('/images/floral_frame.png') no-repeat center",
+        backgroundSize: "cover",
+        ":hover": {
+          transform: "scale(1.1)",
+          transition: "transform 0.5s",
+          color: "var(--light-orange)",
+          cursor: "pointer",
+        },
+      }}
+    >
+      <Typography variant="h3" fontFamily="LilyScriptOne">
+        {time}
+      </Typography>
+    </Box>
+  );
+};

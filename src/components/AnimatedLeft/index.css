@@ -1,26 +1,69 @@
 .animated-left {
   position: fixed;
-  top: 5vh;
-  color: #e6d9b2;
-  z-index: 999;
-  width: 40px;
+  left: 0;
+  top: 10vh;
+  color: var(--lighter-text);
+  z-index: 11;
   will-change: height, width, transform, opacity, color;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 10vw;
+  transition: all 0.3s ease-in-out;
+}
+
+.animated-left:hover {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.animated-left-content {
+  width: 40px;
+  background-color: var(--brown-bg);
+  box-shadow: 0 0 10px 0 var(--brown-bg);
+}
+
+.animated-left-content:hover,
+.animated-left .day:hover,
+.animated-left .hour:hover,
+.animated-left .minute:hover {
+  color: var(--light-orange);
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.animated-left:hover::after,
+.animated-left:hover::before {
+  animation-direction: reverse;
+  background-image: linear-gradient(var(--light-orange) 20%, transparent 0);
+}
+
+.animated-left::after {
+  content: "";
+  position: fixed;
+  left: 19px;
+  top: -15.5vh;
+  opacity: 0.8;
+  z-index: 10;
+  background-image: linear-gradient(var(--white-text) 20%, transparent 0);
+
+  background-size: 100% 10px;
+  background-position: 0 0;
+  animation: movingdots 0.5s linear infinite;
+  animation-direction: normal;
+  will-change: transform;
+  width: 2px;
+  height: 15vh;
 }
 
 .animated-left::before {
   content: "";
   position: fixed;
-  top: 70px;
+  top: 105px;
   left: 19px;
   bottom: 0;
   opacity: 0.8;
   z-index: 11;
-  background-image: linear-gradient(
-    var(--light-orange) 20%,
-    transparent 30%,
-    #eda187 20%,
-    transparent 0
-  );
+  background-image: linear-gradient(var(--white-text) 20%, transparent 0);
   background-size: 100% 10px;
   background-position: 0 0;
   animation: movingdots 0.5s linear infinite;

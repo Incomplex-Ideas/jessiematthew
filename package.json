@@ -21,7 +21,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-moving-text": "^0.0.7",
-    "react-spring": "^9.7.3"
+    "react-spring": "^9.7.3",
+    "swiper": "^11.0.7"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",

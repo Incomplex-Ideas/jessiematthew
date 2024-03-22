@@ -1,6 +1,6 @@
 "use client";
 
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useEffect } from "react";
 
 export default function OurName() {
@@ -50,7 +50,6 @@ export default function OurName() {
 
   useEffect(() => {
     let el = document.getElementById("names");
-    console.log(el);
     if (!el) {
       console.error("Element with ID 'names' not found.");
       return;
@@ -60,9 +59,15 @@ export default function OurName() {
   }, []);
 
   return (
-    <div id="names">
-      <Typography variant="h1">
-        Matthew{" "}
+    <Box
+      id="names"
+      minHeight="200px"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Typography variant="h1" fontFamily="Darling" color="var(--brown-bg)">
+        Jessie{" "}
         <span
           style={{
             fontFamily: "LilyScriptOne",
@@ -71,8 +76,8 @@ export default function OurName() {
         >
           &
         </span>{" "}
-        Jessie
+        Matthew
       </Typography>
-    </div>
+    </Box>
   );
 }

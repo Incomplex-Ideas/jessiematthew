@@ -1,0 +1,18 @@
+#floral_frame {
+  animation: heartbeat 4s infinite;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+    color: var(--brown-bg);
+  }
+  50% {
+    transform: scale(1.1);
+    color: var(--light-orange);
+  }
+  100% {
+    transform: scale(1);
+    color: var(--brown-bg);
+  }
+}
