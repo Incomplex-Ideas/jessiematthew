@@ -2,5 +2,46 @@
   position: fixed;
   right: 0;
   top: 0;
+  transform: translate(50%, -50%) rotate(45deg);
+  z-index: 11;
+}
+/* home will be at 225 degree of the circle menu */
+.where {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 11;
+}
+
+.story {
+  position: absolute;
+  bottom: 50%;
+  right: 0;
+  transform: translate(50%, 50%);
+  z-index: 11;
+}
+
+.gallery {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translate(50%, -50%);
+  z-index: 11;
+}
+
+/* .gallery {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+} */
+
+.rolling-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 11;
 }

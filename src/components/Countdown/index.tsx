@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import "./index.css";
 import { useTimeCountdown } from "@/hooks/useTimeCountdown";
+import WeMadeIt from "../WeMadeIt";
 
 type MyFormattedTime = {
   days: number;
@@ -14,11 +15,7 @@ export default function Countdown() {
   const { isMarried, formattedTime } = useTimeCountdown();
   return (
     <Box>
-      {isMarried ? (
-        <Typography variant="h1" textAlign="center" fontFamily="Darling">
-          Married
-        </Typography>
-      ) : null}
+      {isMarried ? <WeMadeIt /> : null}
       <Box
         display="flex"
         alignItems="center"

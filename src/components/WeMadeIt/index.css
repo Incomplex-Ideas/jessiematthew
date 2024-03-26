@@ -1,0 +1,16 @@
+.rolling-text {
+  width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: rolling-animation 5s infinite linear;
+  border-radius: 50px;
+}
+
+@keyframes rolling-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

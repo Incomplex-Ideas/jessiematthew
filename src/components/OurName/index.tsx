@@ -65,6 +65,8 @@ export default function OurName() {
       display="flex"
       alignItems="center"
       justifyContent="center"
+      position="relative"
+      zIndex="999"
     >
       <Typography variant="h1" fontFamily="Darling" color="var(--brown-bg)">
         Jessie{" "}

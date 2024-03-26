@@ -1,0 +1,133 @@
+.gift-card {
+  position: relative;
+  width: 400px;
+  background: var(--middle-dark-brown-bg);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.gift-card::after {
+  content: "";
+  border-top: 60px solid #2c1f10;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  height: 0;
+  left: 0;
+  position: absolute;
+  bottom: -59px;
+  width: 0;
+}
+
+.gift-card::before {
+  content: "";
+  border-bottom: 60px solid #2c1f10;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  height: 0;
+  left: 0;
+  position: absolute;
+  top: -59px;
+  width: 0;
+}
+
+.right-parallax {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 85%;
+  background-color: #221a0d;
+  width: 200px;
+  z-index: -1;
+}
+
+.right-parallax::after {
+  content: "";
+  border-top: 60px solid #221a0d;
+  border-left: 0px solid transparent;
+  border-right: 200px solid transparent;
+  height: 0;
+  left: 0;
+  position: absolute;
+  bottom: -59px;
+  width: 0;
+}
+
+.right-parallax::before {
+  content: "";
+  border-bottom: 60px solid #221a0d;
+  border-left: 200px solid transparent;
+  border-right: 0px solid transparent;
+  height: 0;
+  left: 0;
+  position: absolute;
+  top: -59px;
+  width: 0;
+}
+
+.left-parallax {
+  position: absolute;
+  bottom: 5rem;
+  left: -20%;
+  background-color: var(--white-text);
+  width: 200px;
+  height: 500px;
+  z-index: -1;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  background-color: var(--white-text);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.name {
+  top: 50%;
+  left: 50%;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.name-background {
+  position: absolute;
+  z-index: 1;
+  top: 47%;
+  left: 50%;
+  background-color: var(--middle-dark-brown-bg);
+  width: 50vw;
+  height: 200px;
+}
+
+.name-background::before {
+  content: "";
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  border-right: 50px solid var(--middle-dark-brown-bg);
+  height: 0;
+  left: -50px;
+  position: absolute;
+  bottom: 0;
+  width: 0;
+}
+
+.name-background::after {
+  content: "";
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  border-left: 50px solid var(--middle-dark-brown-bg);
+  height: 0;
+  right: -50px;
+  position: absolute;
+  bottom: 0;
+  width: 0;
+}

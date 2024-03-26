@@ -19,6 +19,7 @@ export default function InformationRight() {
           boxShadow: "0 0 10px 0 var(--brown-bg)",
           color: "var(--lighter-text)",
         }}
+        borderRadius="4px"
       >
         <Typography variant="h6" fontFamily="LilyScriptOne">
           05

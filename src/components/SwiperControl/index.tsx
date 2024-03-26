@@ -2,47 +2,44 @@
 
 import "swiper/react";
 import "swiper/css";
-// import "swiper/css/pagination";
 import "./styles.css";
 
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Mousewheel, A11y, Keyboard, Controller } from "swiper/modules";
+import React, { useEffect } from "react";
 import Landing from "../Landing";
 import OurStory from "../OurStory";
 import { SlideContextProvider } from "@/providers/SlideContextProvider";
 import AnimatedLeft from "../AnimatedLeft";
+import RollingMenu from "../RollingMenu";
+import { useMotionValueEvent, useScroll } from "framer-motion";
+import { ParallaxProvider } from "react-scroll-parallax";
 
-export default function SwiperControl({ children }: React.PropsWithChildren) {
+export default function SwiperControl() {
   const [activeSlide, setActiveSlide] = React.useState<number>(0);
-  const [controlledSwiper, setControlledSwiper] = React.useState(null);
+  const { scrollY } = useScroll();
 
-  const handleActiveSlide = (slide: number) => {
-    setActiveSlide(slide);
-  };
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (activeSlide === 0 && latest > 1300) {
+      setActiveSlide(1);
+    }
+    if (activeSlide !== 0 && latest < 1300) {
+      setActiveSlide(0);
+    }
+  });
+
+  // useEffect(() => {
+  //   if (scrollYProgress > 1300) {
+  //     setActiveSlide(1);
+  //   }
+  // }, [scrollYProgress]);
 
   return (
     <SlideContextProvider activeSlide={activeSlide}>
-      <Swiper
-        slidesPerView={1}
-        mousewheel={true}
-        modules={[Mousewheel, A11y, Keyboard, Controller]}
-        onSlideChange={(slide) => handleActiveSlide(slide.activeIndex)}
-        effect="fade"
-        controller={{ control: controlledSwiper }}
-      >
-        <SwiperSlide>
-          <Landing />
-        </SwiperSlide>
-        <SwiperSlide>
-          <OurStory />
-        </SwiperSlide>
-      </Swiper>
-      {children}
-      <AnimatedLeft
-        activeSlide={activeSlide}
-        handleActiveSlide={handleActiveSlide}
-      />
+      <ParallaxProvider>
+        <Landing />
+        <OurStory />
+      </ParallaxProvider>
+      <AnimatedLeft activeSlide={activeSlide} />
+      <RollingMenu activeSlide={activeSlide} />
     </SlideContextProvider>
   );
 }

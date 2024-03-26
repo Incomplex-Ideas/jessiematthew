@@ -5,22 +5,15 @@ import "./index.css";
 import Heart from "@/assets/svgs/heart.svg";
 import Image from "next/image";
 import { useTimeCountdown } from "@/hooks/useTimeCountdown";
-import { useSwiper } from "swiper/react";
 
 type AnimatedLeftProps = {
   activeSlide: number;
-  handleActiveSlide: (slide: number) => void;
 };
-export default function AnimatedLeft({
-  activeSlide,
-  handleActiveSlide,
-}: AnimatedLeftProps) {
+export default function AnimatedLeft({ activeSlide }: AnimatedLeftProps) {
   const { formattedTime } = useTimeCountdown();
-  const swiper = useSwiper();
 
   const scrollTop = () => {
-    handleActiveSlide(0);
-    swiper.slidePrev();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -33,6 +26,7 @@ export default function AnimatedLeft({
         alignItems="center"
         rowGap="0.25rem"
         onClick={scrollTop}
+        borderRadius="4px"
       >
         <Typography variant="h6" fontFamily="LilyScriptOne">
           J
@@ -81,7 +75,6 @@ const TimeSign = ({
       borderRadius="0px 99px 101px 0px"
       width={activeSlide !== 0 ? "110px" : "0px"}
       height="2rem"
-      bgcolor="var(--brown-bg)"
       position="fixed"
       top={top}
       zIndex="12"
