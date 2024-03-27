@@ -1,0 +1,17 @@
+@keyframes orangeLight {
+  0% {
+    color: var(--lighter-text);
+  }
+
+  75% {
+    color: var(--light-orange);
+  }
+
+  100% {
+    color: var(--lighter-text);
+  }
+}
+
+.alias {
+  animation: orangeLight 2s infinite ease-in-out;
+}

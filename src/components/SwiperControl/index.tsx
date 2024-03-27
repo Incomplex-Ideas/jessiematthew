@@ -12,6 +12,8 @@ import AnimatedLeft from "../AnimatedLeft";
 import RollingMenu from "../RollingMenu";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { ParallaxProvider } from "react-scroll-parallax";
+import WeddingPhotoshoot from "../WeddingPhotoshoot";
+import TimePlace from "../TimePlace";
 
 export default function SwiperControl() {
   const [activeSlide, setActiveSlide] = React.useState<number>(0);
@@ -37,9 +39,11 @@ export default function SwiperControl() {
       <ParallaxProvider>
         <Landing />
         <OurStory />
+        <WeddingPhotoshoot />
+        <TimePlace />
       </ParallaxProvider>
       <AnimatedLeft activeSlide={activeSlide} />
-      <RollingMenu activeSlide={activeSlide} />
+      {/* <RollingMenu activeSlide={activeSlide} /> */}
     </SlideContextProvider>
   );
 }

@@ -69,6 +69,11 @@ const TimeSign = ({
   className: string;
   activeSlide: number;
 }) => {
+  const onTimeClick = () => {
+    document
+      .getElementById("time-and-place")
+      ?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <Box
       className={className}
@@ -87,8 +92,9 @@ const TimeSign = ({
         transition: "all 0.5s ease-in-out",
         transitionDelay: "0.5s",
       }}
+      onClick={onTimeClick}
     >
-      <Typography variant="h6" fontFamily="LilyScriptOne" whiteSpace="nowrap">
+      <Typography variant="h6" fontFamily="Iosevka" whiteSpace="nowrap">
         {text}
       </Typography>
     </Box>

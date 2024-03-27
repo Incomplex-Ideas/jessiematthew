@@ -21,13 +21,13 @@ export default function InformationRight() {
         }}
         borderRadius="4px"
       >
-        <Typography variant="h6" fontFamily="LilyScriptOne">
+        <Typography variant="h6" fontFamily="Iosevka">
           05
         </Typography>
-        <Typography variant="h6" fontFamily="LilyScriptOne">
+        <Typography variant="h6" fontFamily="Iosevka">
           /
         </Typography>
-        <Typography variant="h6" fontFamily="LilyScriptOne">
+        <Typography variant="h6" fontFamily="Iosevka">
           05
         </Typography>
       </Box>

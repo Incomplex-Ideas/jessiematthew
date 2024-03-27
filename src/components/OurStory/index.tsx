@@ -28,6 +28,7 @@ export default function OurStory() {
           paddingLeft="2rem"
           display="flex"
           position="relative"
+          alignItems="center"
         >
           <div className="gift-card">
             <Typography variant="h3" fontFamily="LilyScriptOne">
@@ -44,8 +45,8 @@ export default function OurStory() {
 
             <Box paddingTop="2rem" width="100%" paddingX="2rem">
               <Typography variant="h6" fontFamily="LilyScriptOne">
-                "I do" as two words has so much power. It's a vow; a promise; a
-                commitment.
+                &quot;I do&quot; as two words has so much power. It&apos;s a
+                vow; a promise; a commitment.
               </Typography>
               <Typography variant="h6" fontFamily="LilyScriptOne">
                 Thank God for bringing us together.
@@ -61,6 +62,8 @@ export default function OurStory() {
             width="calc(100% - 400px)"
             position="relative"
             zIndex={3}
+            color="var(--lighter-text)"
+            height="fit-content"
           >
             <Box display="flex" flexDirection="column" maxWidth="310px">
               <Box display="flex" alignItems="center" justifyContent="flex-end">

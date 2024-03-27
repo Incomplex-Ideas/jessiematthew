@@ -37,7 +37,7 @@ export default function Landing() {
           <Box textAlign="center">
             <OurName />
           </Box>
-          <Box textAlign="center" paddingTop="10rem">
+          <Box textAlign="center" paddingTop="20rem">
             <Countdown />
           </Box>
           <div id="background-wrap">

@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./index.css";
 import { useTimeCountdown } from "@/hooks/useTimeCountdown";
 import WeMadeIt from "../WeMadeIt";
@@ -36,6 +36,12 @@ type FloralFrameProps = {
 };
 
 const FloralFrame = ({ time }: FloralFrameProps) => {
+  const onClick = () => {
+    // scroll to div with id time-and-place
+    document
+      .getElementById("time-and-place")
+      ?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <Box
       id="floral_frame"
@@ -56,8 +62,9 @@ const FloralFrame = ({ time }: FloralFrameProps) => {
           cursor: "pointer",
         },
       }}
+      onClick={onClick}
     >
-      <Typography variant="h3" fontFamily="LilyScriptOne">
+      <Typography variant="h3" fontFamily="Iosevka">
         {time}
       </Typography>
     </Box>
