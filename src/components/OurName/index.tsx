@@ -1,61 +1,65 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import { useEffect, useRef } from "react";
-
-const MAX_TILT = 20;
+import { useEffect } from "react";
 
 export default function OurName() {
-  const ref = useRef<HTMLDivElement>(null);
+  const handleNameHover = (el: HTMLElement) => {
+    // Get the height and width of the element
+    const height = el.clientHeight;
+    const width = el.clientWidth;
+
+    el.addEventListener("mousemove", handleMove);
+
+    function handleMove(e: any) {
+      // Get position of mouse cursor with respect to the element on mouseover
+      const xVal = e.layerX;
+      const yVal = e.layerY;
+
+      // Calculate rotation value along the Y-axis
+      const yRotation = 20 * ((xVal - width / 2) / width);
+
+      // Calculate the rotation along the X-axis
+      const xRotation = -20 * ((yVal - height / 2) / height);
+
+      // Generate string for CSS transform property
+      const string = `perspective(500px) scale(1.1) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+
+      // Apply the calculated transformation
+      el.style.transform = string;
+    }
+
+    function handleMouseOut() {
+      el.style.transform = "perspective(500px) scale(1) rotateX(0) rotateY(0)";
+    }
+
+    el.addEventListener("mouseout", handleMouseOut);
+
+    function handleMouseDown() {
+      el.style.transform =
+        "perspective(500px) scale(0.9) rotateX(0) rotateY(0)";
+    }
+    el.addEventListener("mousedown", handleMouseDown);
+
+    function handleMouseUp() {
+      el.style.transform =
+        "perspective(500px) scale(1.1) rotateX(0) rotateY(0)";
+    }
+    el.addEventListener("mouseup", handleMouseUp);
+  };
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    // Skip the tilt effect for touch users and those preferring reduced motion
-    if (
-      !window.matchMedia("(hover: hover)").matches ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
+    let el = document.getElementById("names");
+    if (!el) {
+      console.error("Element with ID 'names' not found.");
       return;
     }
 
-    let frame = 0;
-    const set = (transform: string) => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        el.style.transform = transform;
-      });
-    };
-
-    const onMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      const xRatio = (e.clientX - rect.left) / rect.width - 0.5;
-      const yRatio = (e.clientY - rect.top) / rect.height - 0.5;
-      set(
-        `perspective(500px) scale(1.1) rotateX(${-MAX_TILT * yRatio}deg) rotateY(${MAX_TILT * xRatio}deg)`
-      );
-    };
-    const onLeave = () => set("perspective(500px) scale(1)");
-    const onDown = () => set("perspective(500px) scale(0.9)");
-    const onUp = () => set("perspective(500px) scale(1.1)");
-
-    el.addEventListener("mousemove", onMove, { passive: true });
-    el.addEventListener("mouseleave", onLeave);
-    el.addEventListener("mousedown", onDown);
-    el.addEventListener("mouseup", onUp);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      el.removeEventListener("mousemove", onMove);
-      el.removeEventListener("mouseleave", onLeave);
-      el.removeEventListener("mousedown", onDown);
-      el.removeEventListener("mouseup", onUp);
-    };
+    handleNameHover(el);
   }, []);
 
   return (
     <Box
-      ref={ref}
       id="names"
       minHeight="200px"
       display="flex"
@@ -63,10 +67,6 @@ export default function OurName() {
       justifyContent="center"
       position="relative"
       zIndex="999"
-      sx={{
-        transition: "transform 0.2s ease-out",
-        willChange: "transform",
-      }}
     >
       <Typography
         fontSize={{ xs: "5rem", md: "10rem" }}

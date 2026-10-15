@@ -1,47 +1,33 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function Cursor() {
-  const cursorRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    const cursor = cursorRef.current;
-    // No custom cursor on touch devices
-    if (!cursor || !window.matchMedia("(pointer: fine)").matches) return;
+    const cursor = document.querySelector(".cursor");
 
-    let frame = 0;
-    let x = 0;
-    let y = 0;
-    let timeout: ReturnType<typeof setTimeout>;
-
-    const render = () => {
-      frame = 0;
-      cursor.style.translate = `${x}px ${y}px`;
+    const cursorHandle = (e: any) => {
+      cursor?.setAttribute(
+        "style",
+        "top: " + (e.pageY - 10) + "px; left: " + (e.pageX - 10) + "px;"
+      );
     };
 
-    const onMove = (e: MouseEvent) => {
-      x = e.pageX - 10;
-      y = e.pageY - 10;
-      if (!frame) frame = requestAnimationFrame(render);
-    };
+    window.addEventListener("mousemove", cursorHandle);
 
-    const onClick = () => {
-      cursor.classList.add("expand");
-      clearTimeout(timeout);
-      timeout = setTimeout(() => cursor.classList.remove("expand"), 500);
-    };
+    window.addEventListener("click", () => {
+      cursor?.classList.add("expand");
 
-    window.addEventListener("mousemove", onMove, { passive: true });
-    window.addEventListener("click", onClick);
+      setTimeout(() => {
+        cursor?.classList.remove("expand");
+      }, 500);
+    });
 
     return () => {
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("click", onClick);
-      cancelAnimationFrame(frame);
-      clearTimeout(timeout);
+      window.removeEventListener("mousemove", cursorHandle);
     };
   }, []);
 
-  return <div ref={cursorRef} className="cursor" aria-hidden="true" />;
+  return <motion.div className="cursor" animate="default" />;
 }

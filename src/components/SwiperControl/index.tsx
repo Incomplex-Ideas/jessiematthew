@@ -15,29 +15,37 @@ import RollingMenu from "../RollingMenu";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { ParallaxProvider } from "react-scroll-parallax";
 import Aos from "aos";
-import { useMediaQuery } from "@mui/material";
-import LoadingScreen from "../LoadingScreen";
-import SectionSkeleton from "../SectionSkeleton";
+import { Skeleton, Stack, useMediaQuery } from "@mui/material";
 import dynamic from "next/dynamic";
+
+const LoadingSkeleton = () => (
+  <Stack justifyContent={"center"} alignItems={"center"} paddingY="2rem">
+    <Skeleton variant="rectangular" width="80vw" height="80vh" />
+  </Stack>
+);
 
 const Landing = dynamic(() => import("../Landing"), {
   ssr: false,
-  loading: () => <LoadingScreen />,
+  loading: () => (
+    <Stack justifyContent={"center"} alignItems={"center"} paddingY="2rem">
+      <Skeleton variant="rectangular" width="80vw" height="100vh" />
+    </Stack>
+  ),
 });
 
 const OurStory = dynamic(() => import("../OurStory"), {
   ssr: false,
-  loading: () => <SectionSkeleton />,
+  loading: () => <LoadingSkeleton />,
 });
 
 const WeddingPhotoshoot = dynamic(() => import("../WeddingPhotoshoot"), {
   ssr: false,
-  loading: () => <SectionSkeleton />,
+  loading: () => <LoadingSkeleton />,
 });
 
 const TimePlace = dynamic(() => import("../TimePlace"), {
   ssr: false,
-  loading: () => <SectionSkeleton />,
+  loading: () => <LoadingSkeleton />,
 });
 
 export default function SwiperControl() {
