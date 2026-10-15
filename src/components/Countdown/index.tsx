@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Typography, useMediaQuery } from "@mui/material";
+import { Box, Skeleton, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 import "./index.css";
 import { useTimeCountdown } from "@/hooks/useTimeCountdown";
@@ -36,20 +36,22 @@ export default function Countdown() {
           translateY: "0px",
           opacity: 1,
         }}
+        viewport={{ once: true }}
         transition={{
-          duration: 2,
+          duration: 1.2,
+          ease: "easeOut",
         }}
       >
-        <FloralFrame time={`${formattedTime.days}D`} />
-        <FloralFrame time={`${formattedTime.hours}H`} />
-        <FloralFrame time={`${formattedTime.minutes}M`} />
+        <FloralFrame time={formattedTime && `${formattedTime.days}D`} />
+        <FloralFrame time={formattedTime && `${formattedTime.hours}H`} />
+        <FloralFrame time={formattedTime && `${formattedTime.minutes}M`} />
       </motion.div>
     </Box>
   );
 }
 
 type FloralFrameProps = {
-  time: string;
+  time: string | null;
   [key: string]: any;
 };
 
@@ -82,28 +84,29 @@ const FloralFrame = ({ time, ...rest }: FloralFrameProps) => {
       onClick={onClick}
       {...rest}
     >
-      <motion.div
-        initial={{
-          translateY: "100px",
-          opacity: 0,
-        }}
-        whileInView={{
-          translateX: "0px",
-          translateY: "0px",
-          opacity: 1,
-        }}
-        transition={{
-          duration: 2,
-        }}
-      >
-        <Typography
-          variant="h3"
-          fontFamily="Iosevka"
-          className="gradient-countdown"
+      {time === null ? (
+        <Skeleton
+          variant="text"
+          animation="wave"
+          width="3ch"
+          sx={{ fontSize: { xs: "2rem", md: "3rem" } }}
+        />
+      ) : (
+        <motion.div
+          key={time}
+          initial={{ opacity: 0, translateY: "12px" }}
+          animate={{ opacity: 1, translateY: "0px" }}
+          transition={{ duration: 0.5 }}
         >
-          {time}
-        </Typography>
-      </motion.div>
+          <Typography
+            variant="h3"
+            fontFamily="Iosevka"
+            className="gradient-countdown"
+          >
+            {time}
+          </Typography>
+        </motion.div>
+      )}
     </Box>
   );
 };

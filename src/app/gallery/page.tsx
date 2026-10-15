@@ -2,6 +2,7 @@
 
 import { Box, ImageList, ImageListItem, Typography } from "@mui/material";
 import Link from "next/link";
+import FadeInImage from "@/components/FadeInImage";
 import { Firestore, storage } from "@/lib/firebase/setup";
 import { getBlob, ref } from "firebase/storage";
 import { useEffect } from "react";
@@ -106,7 +107,7 @@ export default function Page() {
           {itemData.map((item) => (
             <Link key={item.img} href={`/photo/${item.id}`}>
               <ImageListItem key={item.img}>
-                <img
+                <FadeInImage
                   srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                   src={`${item.img}?w=248&fit=crop&auto=format`}
                   alt={item.title}

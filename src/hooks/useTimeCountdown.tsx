@@ -9,11 +9,10 @@ type MyFormattedTime = {
 export const useTimeCountdown = () => {
   const [isMarried, setIsMarried] = useState(false);
   const myWeddingTimeInMilliseconds = 1714910400000; // May 05 2024
-  const [formattedTime, setFormattedTime] = useState<MyFormattedTime>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-  });
+  // null until mounted so the UI can show a placeholder instead of flashing 0D 0H 0M
+  const [formattedTime, setFormattedTime] = useState<MyFormattedTime | null>(
+    null
+  );
 
   const formatTime = (milliseconds: number) => {
     const minutes = Math.abs(Math.floor((milliseconds / (1000 * 60)) % 60));
@@ -33,9 +32,7 @@ export const useTimeCountdown = () => {
     updateCountdown();
     const countdownInterval = setInterval(updateCountdown, 60000);
 
-    if (Date.now() > myWeddingTimeInMilliseconds) {
-      setIsMarried(true);
-    }
+    setIsMarried(Date.now() > myWeddingTimeInMilliseconds);
 
     // Clean up the interval when the component unmounts
     return () => {

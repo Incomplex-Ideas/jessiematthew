@@ -53,10 +53,12 @@ body {
   height: 24px;
   width: 24px;
   border-radius: 50%;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
+  pointer-events: none;
+  will-change: translate;
   /* background-color: var(--dark-background);
   animation: cursorAnim 0.5s infinite alternate; */
 }
@@ -79,6 +81,20 @@ body {
   z-index: 999;
   animation: cursorAnim3 0.5s forwards;
   border: 1px solid var(--light-orange);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @keyframes cursorAnim {
