@@ -1,14 +1,13 @@
-import { Box, Skeleton } from "@mui/material";
+import { Box } from "@mui/material";
 import dynamic from "next/dynamic";
 import Cursor from "@/components/Cursor";
 import InformationRight from "@/components/InformationRight";
+import LoadingScreen from "@/components/LoadingScreen";
 // import SwiperControl from "@/components/SwiperControl";
 
 const SwiperControl = dynamic(() => import("@/components/SwiperControl"), {
   ssr: true,
-  loading: () => (
-    <Skeleton variant="rectangular" width="100vw" height="100vh" />
-  ),
+  loading: () => <LoadingScreen />,
 });
 
 export default function Home() {
