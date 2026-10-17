@@ -2,17 +2,23 @@
 //
 // Usage: node --env-file=.env.local scripts/upload-photos.mjs <folder>
 //
+// Each photo is downscaled (max 3000px long edge, JPEG q85, EXIF-rotated) before
+// upload, so originals larger than Cloudinary's 10MB free-tier limit are fine.
+// Originals are never modified; keep them wherever you store the full-size set.
+//
 // Needs API_KEY and API_SECRET in .env.local. Safe to re-run: files already
 // on Cloudinary are skipped (overwrite is disabled), and the manifest is
 // rebuilt from the results every time.
 import { createHash } from "node:crypto";
 import { readdir, readFile, writeFile } from "node:fs/promises";
+import sharp from "sharp";
 import { basename, extname, join } from "node:path";
 
 const CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME ?? "dv5fceh4n";
 const { API_KEY, API_SECRET } = process.env;
 const FOLDER = "wedding";
 const CONCURRENCY = 4;
+const MAX_EDGE = 3000;
 const EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".heic"]);
 const MANIFEST = new URL("../src/data/photos.json", import.meta.url);
 
@@ -48,7 +54,12 @@ async function upload(file) {
   for (const [k, v] of Object.entries(params)) body.append(k, String(v));
   body.append("api_key", API_KEY);
   body.append("signature", sign(params));
-  body.append("file", new Blob([await readFile(file)]), basename(file));
+  const resized = await sharp(await readFile(file))
+    .rotate()
+    .resize({ width: MAX_EDGE, height: MAX_EDGE, fit: "inside", withoutEnlargement: true })
+    .jpeg({ quality: 85, mozjpeg: true })
+    .toBuffer();
+  body.append("file", new Blob([resized], { type: "image/jpeg" }), `${publicId}.jpg`);
 
   const res = await fetch(
     `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
